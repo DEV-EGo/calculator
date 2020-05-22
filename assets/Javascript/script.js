@@ -1,7 +1,52 @@
-var numberButtons = document.querySelectorAll('[data-number]');
-var operationButtons = document.querySelectorAll('[data-operation]');
-var equalsButton = document.querySelector('[data-equals]');
-var deleteButton = document.querySelector('[data-equals]');
-var allClearButton = document.querySelector('[data-equals]');
-var previousOperandTextElement = document.querySelector('[data-equals]');
-var equalsButton = document.querySelector('[data-equals]');
+class Calculator {
+    constructor(previousOperandTextElement, currentOperandTextElelement) {
+        this.previousOperandTextElement = previousOperandTextElement
+        this.currentOperandTextElelement = currentOperandTextElelement
+        this.clear()
+    }
+
+    clear() {
+        this.currentOperand = ''
+        this.previousOperand = ''
+        this.operation = undefined
+    }
+
+    delete() {
+
+    }
+
+    appendNumber(number) {
+        if (number === '.' && this.currentOperand.includes('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString()
+    }
+
+    chooseOperation(operation) {
+
+    }
+
+    compute() {
+
+    }
+
+    updateDisplay() {
+        this.currentOperandTextElelement.innerText = this.currentOperand
+    }
+}
+
+
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operation]');
+const equalsButton = document.querySelector('[data-equals]');
+const deleteButton = document.querySelector('[data-delete]');
+const allClearButton = document.querySelector('[data-all-clear]');
+const previousOperandTextElement = document.querySelector('[data-previous-operand]');
+const currentOperandTextElelement = document.querySelector('[data-current-operand]');
+
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElelement);
+
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText)
+        calculator.updateDisplay()
+    })
+})
