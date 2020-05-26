@@ -78,9 +78,6 @@ class Calculator {
             return integerDisplay
         }
 
-        // const floatNumber = parseFloat(number)
-        // if (isNaN(floatNumber)) return ''
-        // return floatNumber.tolocalString('en')
     }
 
     updateDisplay() {
@@ -90,6 +87,8 @@ class Calculator {
             this.previousOperandTextElement.innerText =
                 `${this.previousOperand} ${this.operation}`
 
+        } else {
+            this.previousOperandTextElement.innerText = ''
         }
     }
 }
